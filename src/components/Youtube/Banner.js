@@ -67,7 +67,7 @@ const Banner = () => {
                     </li>
                     <li>
                       <a
-                        href="https://instagram.com/"
+                        href="https://instagram.com/migo.adecer"
                         className="instagram"
                         target="_blank"
                       >
