@@ -40,7 +40,8 @@ const About = () => {
 
                 <div className="btn-box">
                   <ModalForm />
-                  <span className="email">hello@allisondoe.com</span>
+                  <span className="email">adecerdouglas@gmail.com
+                  </span>
                 </div>
               </div>
             </div>
@@ -52,19 +53,19 @@ const About = () => {
                     <ul>
                       <li>
                         Name:
-                        <span>Allsion Doe</span>
+                        <span>Douglas Adecer</span>
                       </li>
                       <li>
                         Email:
-                        <span className="email">hello@allisondoe.com</span>
+                        <span className="email">adecerdouglas@gmail.com</span>
                       </li>
                       <li>
                         Role:
-                        <span>Youtube Influencer</span>
+                        <span>Actor</span>
                       </li>
                       <li>
                         Phone:
-                        <span>+22 7854 9857</span>
+                        <span>+61 406 057 278</span>
                       </li>
                     </ul>
                   </div>
