@@ -2431,14 +2431,16 @@ Main Banner Area CSS
 .youtube-main-banner {
   overflow: hidden;
   position: relative;
-  height: 100vh;
   z-index: 1;
   background-color: #000000;
   background-image: url(/images/youtube/yout-main-banner.jpg);
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  padding: 150px 0; /* Add spacing top & bottom */
 }
+
 
 .yout-main-banner-content {
   max-width: 555px;
