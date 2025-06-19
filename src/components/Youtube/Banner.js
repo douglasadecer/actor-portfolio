@@ -18,7 +18,7 @@ const Banner = () => {
                   data-aos-duration="800"
                   data-aos-once="true"
                 >
-                  <span>Hi, I&apos;M</span> Douglas Adecer
+                  <span>Hi, I&apos;m</span> Douglas Adecer
                 </h1>
 
                 <p
@@ -74,15 +74,16 @@ const Banner = () => {
                         <i className="bx bxl-instagram"></i>
                       </a>
                     </li>
-                    <li>
+                     <li>
                       <a
-                        href="https://pinterest.com/"
-                        className="pinterest"
+                        href="https://www.tiktok.com/@dougxplicit" // <-- Replace with your actual username
+                        className="tiktok"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <i className="bx bxl-pinterest-alt"></i>
-                      </a>
-                    </li>
+                        <i className="bx bxl-tiktok"></i>
+                      </a>  
+                    </li>  
                   </ul>
                 </div>
               </div>

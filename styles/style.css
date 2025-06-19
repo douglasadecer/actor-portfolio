@@ -2456,6 +2456,7 @@ Main Banner Area CSS
 }
 .yout-main-banner-content h1 span {
   display: block;
+  padding-right: 5px;
   font-style: italic;
 }
 .yout-main-banner-content p {
