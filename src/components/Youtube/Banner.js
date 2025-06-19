@@ -18,7 +18,7 @@ const Banner = () => {
                   data-aos-duration="800"
                   data-aos-once="true"
                 >
-                  <span>Hi, I&apos;M</span> Douglas Adecer
+                  <span>Hi, I&apos;m</span> Douglas Adecer
                 </h1>
 
                 <p
