@@ -27,9 +27,8 @@ const Banner = () => {
                   data-aos-duration="800"
                   data-aos-once="true"
                 >
-                  A Photographer & Business Strategist who empowers
-                  entrepreneurs to build a brand, market it on social media, and
-                  create a life they love.
+                  An actor and creative interested in work that explores identity, memory, 
+                  and truth—connecting through story and grounded performance.
                 </p>
 
                 <div
