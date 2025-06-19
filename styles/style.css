@@ -3296,4 +3296,12 @@ Join Area CSS
   width: 100%;
 }
 
-/* End Home Two CSS *//*# sourceMappingURL=style.css.map */
+/* Responsive fix for large headings */
+@media (max-width: 767px) {
+  .main-banner-content h1,
+  .yout-main-banner-content h1 {
+    font-size: 36px;
+    word-break: break-word;
+    line-height: 1.1;
+  }
+}
