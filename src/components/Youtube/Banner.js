@@ -22,6 +22,7 @@ const Banner = () => {
                 </h1>
 
                 <p
+                  dir="ltr"
                   data-aos="fade-up"
                   data-aos-delay="200"
                   data-aos-duration="800"

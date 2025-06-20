@@ -13,6 +13,7 @@ const ModalForm = () => {
       </Button>
 
       <Modal
+        dir="ltr"
         isOpen={modal}
         toggle={toggle}
         centered={true}
