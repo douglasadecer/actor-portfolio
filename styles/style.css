@@ -2722,6 +2722,12 @@ Featured Videos Area CSS
 .single-featured-videos-box .videos-content .videos-meta li:last-child::before {
   display: none;
 }
+.featured-videos-area .single-featured-videos-box .videos-content .videos-meta li::before {
+  display: none !important;
+}
+.featured-videos-area .single-featured-videos-box .videos-content h3 {
+  text-align: center;
+}
 
 /*================================================
 About Area CSS

@@ -42,6 +42,7 @@ const NavbarTwo = () => {
           const section = document.querySelector(link.hash);
 
           if (
+            section &&
             section.offsetTop <= fromTop &&
             section.offsetTop + section.offsetHeight > fromTop
           ) {
@@ -139,17 +140,6 @@ const NavbarTwo = () => {
                   href="#channels"
                 >
                   Channels
-                </AnchorLink>
-              </li>
-
-              <li className="nav-item">
-                <AnchorLink
-                  onClick={toggleNavbar}
-                  offset={() => -1}
-                  className="nav-link"
-                  href="#blog"
-                >
-                  Blog
                 </AnchorLink>
               </li>
 
