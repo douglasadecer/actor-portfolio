@@ -23,18 +23,16 @@ const videos = [
     date: "Sep 6, 2013",
   },
   {
-    image: "/images/youtube/featured-videos/featured-video3.jpg",
-    title: "Katy Perry - Dark Horse ft. Juicy J",
-    videoId: "0KSOMA3QBU0",
-    duration: "03.05",
-    views: "4.3M views",
-    date: "Feb 21, 2014",
+    image: "/images/youtube/featured-videos/dramamonologue2.png",
+    title: "Drama Monologue (English)",
+    videoId: "Cp3VOyNKhFQ",
+    duration: "02:12",
   },
   {
     image: "/images/youtube/featured-videos/dramamonologue.png",
     title: "Drama Monologue (Tagalog)",
     videoId: "I7k0H14fIV0",
-    duration: "02.35",
+    duration: "02:35",
   },
 ];
 

@@ -3309,4 +3309,32 @@ Join Area CSS
   width: 100%;
 }
 
-/* End Home Two CSS *//*# sourceMappingURL=style.css.map */
+/* End Home Two CSS */
+.about-content-two,
+.about-content-two h2,
+.about-content-two h5,
+.about-content-two p,
+.about-info-two ul,
+.about-info-two ul li {
+  text-align: left !important;
+}
+.about-content-two h2::before {
+  left: auto;
+  right: 0;
+}
+.about-content-two h2::after {
+  left: auto;
+  right: 20px;
+}
+@media (max-width: 991px) {
+  .about-row-flex {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-row-flex .col-lg-8 {
+    order: 1;
+  }
+  .about-row-flex .col-lg-4 {
+    order: 2;
+  }
+}

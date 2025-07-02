@@ -9,7 +9,7 @@ const About = () => {
     <>
       <section id="about" className="about-area-two bg-f5eded ptb-100">
         <div className="container">
-          <div className="row">
+          <div className="row about-row-flex">
             <div className="col-lg-8 col-md-12">
               <div className="about-content-two">
                 <h2>About Me</h2>
