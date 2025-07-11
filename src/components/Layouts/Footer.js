@@ -22,7 +22,17 @@ const Footer = () => {
             <div className="col-lg-6 col-md-6">
               <ul>
                 <li>
-                  <a href="https://instagram.com/" target="_blank">
+                  <a href="https://linkedin.com/" target="_blank">
+                    <i className="bx bxl-linkedin"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.tiktok.com/@dougxplicit" target="_blank" rel="noopener noreferrer">
+                    <i className="bx bxl-tiktok"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://instagram.com/migo.adecer" target="_blank">
                     <i className="bx bxl-instagram"></i>
                   </a>
                 </li>
@@ -32,13 +42,8 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/" target="_blank">
-                    <i className="bx bxl-twitter"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://linkedin.com/" target="_blank">
-                    <i className="bx bxl-linkedin"></i>
+                  <a href="https://youtube.com/" target="_blank">
+                    <i className="bx bxl-youtube"></i>
                   </a>
                 </li>
               </ul>

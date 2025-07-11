@@ -126,28 +126,6 @@ const NavbarTwo = () => {
                   onClick={toggleNavbar}
                   offset={() => -1}
                   className="nav-link"
-                  href="#playlists"
-                >
-                  Playlists
-                </AnchorLink>
-              </li>
-
-              <li className="nav-item">
-                <AnchorLink
-                  onClick={toggleNavbar}
-                  offset={() => -1}
-                  className="nav-link"
-                  href="#channels"
-                >
-                  Channels
-                </AnchorLink>
-              </li>
-
-              <li className="nav-item">
-                <AnchorLink
-                  onClick={toggleNavbar}
-                  offset={() => -1}
-                  className="nav-link"
                   href="#contact"
                 >
                   Contact

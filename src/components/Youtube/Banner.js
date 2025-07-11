@@ -39,15 +39,17 @@ const Banner = () => {
                   data-aos-duration="800"
                   data-aos-once="true"
                 >
-                  <Link
-                    href="#"
-                    onClick={(e) => e.preventDefault()}
-                    className="default-btn-two"
-                  >
-                    Youtube Channel
-                  </Link>
-
                   <ul>
+                    <li>
+                      <a
+                        href="https://www.youtube.com/@dougxplicit"
+                        className="youtube"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i className="bx bxl-youtube"></i>
+                      </a>
+                    </li>
                     <li>
                       <a
                         href="https://facebook.com/"
@@ -55,15 +57,6 @@ const Banner = () => {
                         target="_blank"
                       >
                         <i className="bx bxl-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://twitter.com/"
-                        className="twitter"
-                        target="_blank"
-                      >
-                        <i className="bx bxl-twitter"></i>
                       </a>
                     </li>
                     <li>

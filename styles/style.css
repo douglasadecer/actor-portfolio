@@ -3338,3 +3338,50 @@ Join Area CSS
     order: 2;
   }
 }
+
+/* TikTok brand colors for main banner social icon */
+.yout-main-banner-content .btn-box ul li a.tiktok {
+  background: #000;
+  color: #fff;
+}
+.yout-main-banner-content .btn-box ul li a.tiktok .bxl-tiktok {
+  color: #fff;
+}
+.yout-main-banner-content .btn-box ul li a.tiktok:hover {
+  background: #fff;
+  color: #000;
+}
+.yout-main-banner-content .btn-box ul li a.tiktok:hover .bxl-tiktok {
+  color: #000;
+}
+
+/* X (Twitter) icon styling for main banner - uniform with others */
+.yout-main-banner-content .btn-box ul li a.x-icon {
+  background-color: #000;
+  color: #fff;
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 3px 5px 25px 0 rgba(0, 0, 0, 0.1);
+}
+.yout-main-banner-content .btn-box ul li a.x-icon .x-logo-img {
+  width: 13px;
+  height: 13pxx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: filter 0.3s;
+}
+.yout-main-banner-content .btn-box ul li a.x-icon:hover {
+  background-color: #fff;
+  color: #000;
+}
+.yout-main-banner-content .btn-box ul li a.x-icon:hover .x-logo-img {
+  content: url('/images/x-logo-black.png');
+}
