@@ -11,8 +11,8 @@ const JoinWithMe = () => {
           <div className="join-content">
             <h2>Work With Me</h2>
             <p>
-              This is what I truly care about. I've come to understand that being a creative is my passion.
-              Something I'm willing to work tears, sweat, and blood for. 
+              This is what I truly care about. I&apos;ve come to understand that being a creative is my passion.
+              Something I&apos;m willing to work tears, sweat, and blood for. 
             </p>
 
             <div className="btn-box">
