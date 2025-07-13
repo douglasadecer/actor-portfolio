@@ -9,18 +9,18 @@ const JoinWithMe = () => {
       <section id="contact" className="join-area">
         <div className="container">
           <div className="join-content">
-            <h2>Join With Me</h2>
+            <h2>Work With Me</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore.
+              This is what I truly care about. I've come to understand that being a creative is my passion.
+              Something I'm willing to work tears, sweat, and blood for. 
             </p>
 
             <div className="btn-box">
               {/* ModalForm */}
               <ModalForm />
 
-              <a href="mailto:hello@allisondoe.com" className="email">
-                hello@allisondoe.com
+              <a href="mailto:adecerdouglas@gmail.com" className="email">
+                adecerdouglas@gmail.com
               </a>
             </div>
           </div>

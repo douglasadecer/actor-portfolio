@@ -3252,6 +3252,7 @@ Join Area CSS
   background-repeat: no-repeat;
 }
 .join-content h2 {
+  text-align: center;
   color: #ffffff;
   margin-bottom: 10px;
   font-size: 35px;
@@ -3259,6 +3260,8 @@ Join Area CSS
   font-family: var(--font-roboto);
 }
 .join-content p {
+  direction: ltr;
+  text-align: center;
   color: #f1f1f1;
   font-family: var(--font-roboto);
   font-size: 15px;

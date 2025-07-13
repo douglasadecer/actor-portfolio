@@ -24,36 +24,60 @@ const NavbarTwo = () => {
 
     document.addEventListener("scroll", handleScroll);
 
+    // Bulletproof Contact tab highlight logic (ONLY this logic)
+    const bulletproofScroll = () => {
+      const mainNavLinks = document.querySelectorAll('.navbar-nav li a');
+      const contactNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#contact');
+      const contactSection = document.querySelector('#contact');
+      let activeLink = null;
+      // 1. If user is near the bottom, set Contact as active
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.offsetHeight;
+      if (docHeight - scrollBottom < 100 && contactNavLink) {
+        activeLink = contactNavLink;
+      }
+      // 2. If top of viewport is at or past contact section
+      else if (contactSection && contactNavLink) {
+        const contactTop = contactSection.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY + 150 >= contactTop) {
+          activeLink = contactNavLink;
+        }
+      }
+      // 3. Normal scroll logic for other tabs
+      if (!activeLink) {
+        let found = false;
+        mainNavLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#') && href !== '#contact') {
+            const section = document.querySelector(href);
+            if (section) {
+              const sectionTop = section.offsetTop;
+              const sectionHeight = section.offsetHeight;
+              const fromTop = window.scrollY + 120;
+              if (sectionTop <= fromTop && sectionTop + sectionHeight > fromTop) {
+                activeLink = link;
+                found = true;
+              }
+            }
+          }
+        });
+        // If no section is found (e.g., scrolled above first section), highlight Home
+        if (!found && mainNavLinks[0]) {
+          activeLink = mainNavLinks[0];
+        }
+      }
+      // Set only the active link
+      mainNavLinks.forEach(link => link.classList.remove('active'));
+      if (activeLink) activeLink.classList.add('active');
+    };
+    window.addEventListener('scroll', bulletproofScroll);
+    bulletproofScroll();
+
     return () => {
       document.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', bulletproofScroll);
     };
   }, []);
-
-  useEffect(() => {
-    menuActiveClass();
-  }, []);
-
-  const menuActiveClass = () => {
-    const mainNavLinks = document.querySelectorAll(".navbar-nav li a");
-    window.addEventListener("scroll", () => {
-      const fromTop = window.scrollY;
-      mainNavLinks.forEach((link) => {
-        if (link.hash) {
-          const section = document.querySelector(link.hash);
-
-          if (
-            section &&
-            section.offsetTop <= fromTop &&
-            section.offsetTop + section.offsetHeight > fromTop
-          ) {
-            link.classList.add("active");
-          } else {
-            link.classList.remove("active");
-          }
-        }
-      });
-    });
-  };
 
   const classOne = collapsed
     ? "collapse navbar-collapse"
@@ -92,7 +116,7 @@ const NavbarTwo = () => {
                 <AnchorLink
                   onClick={toggleNavbar}
                   offset={() => 100}
-                  className="nav-link active"
+                  className="nav-link"
                   href="#home"
                 >
                   Home

@@ -30,29 +30,75 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    menuActiveClass();
-  }, []);
-
-  const menuActiveClass = () => {
     const mainNavLinks = document.querySelectorAll(".navbar-nav li a");
-    window.addEventListener("scroll", () => {
-      const fromTop = window.scrollY;
-      mainNavLinks.forEach((link) => {
-        if (link.hash) {
-          const section = document.querySelector(link.hash);
+    const sectionIds = [
+      "#home",
+      "#about",
+      "#socialStatistics",
+      "#instagramAudience",
+      "#blog",
+      "#contact",
+    ];
+    const sections = sectionIds
+      .map((id) => document.querySelector(id))
+      .filter(Boolean);
 
-          if (
-            section.offsetTop <= fromTop &&
-            section.offsetTop + section.offsetHeight > fromTop
-          ) {
-            link.classList.add("active");
-          } else {
-            link.classList.remove("active");
-          }
+    function onScroll() {
+      const fromTop = window.scrollY + 120; // Offset for navbar height
+      let found = false;
+      const contactSection = document.querySelector('#contact');
+      const mainNavLinks = document.querySelectorAll('.navbar-nav li a');
+      const contactNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#contact');
+      // Debug logs
+      // Remove these after confirming
+      console.log('Scroll handler running');
+      console.log('contactSection:', contactSection);
+      console.log('contactNavLink:', contactNavLink);
+      // 1. If user is near the bottom, always highlight Contact
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.offsetHeight;
+      if (docHeight - scrollBottom < 100 && contactNavLink) {
+        mainNavLinks.forEach(link => link.classList.remove('active'));
+        contactNavLink.classList.add('active');
+        console.log('Highlighting Contact because at bottom');
+        return;
+      }
+      // 2. If top of viewport is at or past contact section
+      if (contactSection && contactNavLink) {
+        const contactTop = contactSection.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY + 150 >= contactTop) { // 150px offset for navbar height and margin
+          mainNavLinks.forEach(link => link.classList.remove('active'));
+          contactNavLink.classList.add('active');
+          console.log('Highlighting Contact because at contact section');
+          return;
+        }
+      }
+      // 3. Normal scroll logic for other tabs
+      sections.forEach((section, idx) => {
+        const link = mainNavLinks[idx];
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add('active');
+          found = true;
+        } else {
+          link.classList.remove('active');
         }
       });
-    });
-  };
+      // If no section is found (e.g., scrolled above first section), highlight Home
+      if (!found && mainNavLinks[0]) {
+        mainNavLinks[0].classList.add('active');
+      }
+    }
+
+    window.addEventListener("scroll", onScroll);
+    // Run on mount in case user loads with hash or is already scrolled
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   const classOne = collapsed
     ? "collapse navbar-collapse"
@@ -91,7 +137,7 @@ const Navbar = () => {
                 <AnchorLink
                   onClick={toggleNavbar}
                   offset={() => 100}
-                  className="nav-link active"
+                  className="nav-link"
                   href="#home"
                 >
                   Home
