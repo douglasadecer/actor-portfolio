@@ -24,68 +24,46 @@ const NavbarTwo = () => {
 
     document.addEventListener("scroll", handleScroll);
 
-    // Bulletproof Contact tab highlight logic (ONLY this logic)
-    const bulletproofScroll = () => {
+    // Improved scrollspy logic for nav tab highlighting
+    const scrollSpy = () => {
       const mainNavLinks = document.querySelectorAll('.navbar-nav li a');
+      const sectionIds = ['#home', '#monologues', '#about', '#headshots', '#contact'];
+      const sections = sectionIds.map(id => document.querySelector(id)).filter(Boolean);
+      let found = false;
+      const fromTop = window.scrollY + 120;
+      // Special case: highlight Contact if near bottom
       const contactNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#contact');
-      const monologuesNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#monologues');
-      const monologuesSection = document.querySelector('#monologues');
-      let activeLink = null;
-      // 1. If user is near the bottom, set Contact as active
       const scrollBottom = window.innerHeight + window.scrollY;
       const docHeight = document.documentElement.offsetHeight;
       if (docHeight - scrollBottom < 100 && contactNavLink) {
-        activeLink = contactNavLink;
+        mainNavLinks.forEach(link => link.classList.remove('active'));
+        contactNavLink.classList.add('active');
+        return;
       }
-      // 2. If top of viewport is at or past contact section
-      else if (contactNavLink) {
-        const contactTop = contactNavLink.getBoundingClientRect().top + window.scrollY;
-        if (window.scrollY + 150 >= contactTop) {
-          activeLink = contactNavLink;
+      // Normal scroll logic
+      sections.forEach((section, idx) => {
+        const link = mainNavLinks[idx];
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add('active');
+          found = true;
+        } else {
+          link.classList.remove('active');
         }
+      });
+      // If no section is found (e.g., scrolled above first section), highlight Home
+      if (!found && mainNavLinks[0]) {
+        mainNavLinks[0].classList.add('active');
       }
-      // 3. If monologues section is in view, highlight its tab
-      else if (monologuesSection && monologuesNavLink) {
-        const sectionTop = monologuesSection.offsetTop;
-        const sectionHeight = monologuesSection.offsetHeight;
-        const fromTop = window.scrollY + 120;
-        if (sectionTop <= fromTop && sectionTop + sectionHeight > fromTop) {
-          activeLink = monologuesNavLink;
-        }
-      }
-      // 4. Normal scroll logic for other tabs
-      if (!activeLink) {
-        let found = false;
-        mainNavLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href && href.startsWith('#') && href !== '#contact' && href !== '#monologues') {
-            const section = document.querySelector(href);
-            if (section) {
-              const sectionTop = section.offsetTop;
-              const sectionHeight = section.offsetHeight;
-              const fromTop = window.scrollY + 120;
-              if (sectionTop <= fromTop && sectionTop + sectionHeight > fromTop) {
-                activeLink = link;
-                found = true;
-              }
-            }
-          }
-        });
-        // If no section is found (e.g., scrolled above first section), highlight Home
-        if (!found && mainNavLinks[0]) {
-          activeLink = mainNavLinks[0];
-        }
-      }
-      // Set only the active link
-      mainNavLinks.forEach(link => link.classList.remove('active'));
-      if (activeLink) activeLink.classList.add('active');
     };
-    window.addEventListener('scroll', bulletproofScroll);
-    bulletproofScroll();
+    window.addEventListener('scroll', scrollSpy);
+    scrollSpy();
 
     return () => {
       document.removeEventListener("scroll", handleScroll);
-      window.removeEventListener('scroll', bulletproofScroll);
+      window.removeEventListener('scroll', scrollSpy);
     };
   }, []);
 
@@ -159,7 +137,7 @@ const NavbarTwo = () => {
                   onClick={toggleNavbar}
                   offset={() => -1}
                   className="nav-link"
-                  href="#videos"
+                  href="#headshots"
                 >
                   HeadShots
                 </AnchorLink>

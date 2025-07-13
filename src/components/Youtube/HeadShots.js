@@ -40,7 +40,7 @@ const HeadShots = () => {
   };
 
   return (
-    <section id="videos" className="headshots-area pt-100" style={{ direction: 'ltr' }}>
+    <section id="headshots" className="headshots-area pt-100" style={{ direction: 'ltr' }}>
       <div className="container">
         <div className="section-title-two">
           <h2>My Headshots</h2>
