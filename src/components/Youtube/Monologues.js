@@ -15,7 +15,7 @@ const videos = [
     date: "May 13, 2017",
   },
   {
-    image: "/images/youtube/featured-videos/dramamonologue3.jpg",
+    image: "/images/youtube/featured-videos/dramamonologue3.png",
     title: "Dramatic / Dark Comedy",
     videoId: "l35rS0pjN3Y",
     duration: "03:54",
