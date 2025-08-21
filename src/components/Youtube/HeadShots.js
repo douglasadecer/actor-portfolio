@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,6 +18,9 @@ const headshots = [
 const HeadShots = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const modalContentRef = useRef(null);
+  const imageRef = useRef(null);
 
   const openModal = (idx) => {
     setSelectedIndex(idx);
@@ -38,6 +41,39 @@ const HeadShots = () => {
     e.stopPropagation();
     setSelectedIndex((prev) => (prev === headshots.length - 1 ? 0 : prev + 1));
   };
+
+  const toggleFullscreen = (e) => {
+    e.stopPropagation();
+    const el = imageRef.current;
+    if (!el) return;
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    if (isFs) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    } else {
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      setIsFullscreen(isFs);
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    document.addEventListener('webkitfullscreenchange', handleFsChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFsChange);
+      document.removeEventListener('webkitfullscreenchange', handleFsChange);
+    };
+  }, []);
 
   return (
     <section id="headshots" className="headshots-area pt-100" style={{ direction: 'ltr' }}>
@@ -92,6 +128,7 @@ const HeadShots = () => {
                 alignItems: 'center',
               }}
               onClick={e => e.stopPropagation()}
+              ref={modalContentRef}
             >
               {/* Left Arrow */}
               <button
@@ -137,33 +174,76 @@ const HeadShots = () => {
               >
                 &#8594;
               </button>
-              <img
-                src={headshots[selectedIndex].image}
-                alt={headshots[selectedIndex].name}
-                style={{ maxWidth: '80vw', maxHeight: '70vh', borderRadius: 8 }}
-              />
-              <h3 style={{ marginTop: 16 }}>{headshots[selectedIndex].name}</h3>
-              <button
-                onClick={closeModal}
+              {/* Controls: Download, Fullscreen, Close */}
+              <div
                 style={{
                   position: 'absolute',
                   top: 10,
                   right: 10,
-                  background: '#000',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '50%',
-                  width: 32,
-                  height: 32,
-                  fontSize: 20,
-                  cursor: 'pointer',
-                  lineHeight: '32px',
-                  textAlign: 'center',
+                  display: 'flex',
+                  gap: 8,
+                  alignItems: 'center'
                 }}
-                aria-label="Close"
               >
-                &times;
-              </button>
+                <a
+                  href={headshots[selectedIndex].image}
+                  download
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    background: '#000',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: 6,
+                    padding: '6px 10px',
+                    fontSize: 14,
+                    cursor: 'pointer',
+                    textDecoration: 'none'
+                  }}
+                  aria-label="Download"
+                >
+                  Download
+                </a>
+                <button
+                  onClick={toggleFullscreen}
+                  style={{
+                    background: '#000',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: 6,
+                    padding: '6px 10px',
+                    fontSize: 14,
+                    cursor: 'pointer'
+                  }}
+                  aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+                >
+                  {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+                </button>
+                <button
+                  onClick={closeModal}
+                  style={{
+                    background: '#000',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '50%',
+                    width: 32,
+                    height: 32,
+                    fontSize: 20,
+                    cursor: 'pointer',
+                    lineHeight: '32px',
+                    textAlign: 'center',
+                  }}
+                  aria-label="Close"
+                >
+                  &times;
+                </button>
+              </div>
+              <img
+                ref={imageRef}
+                src={headshots[selectedIndex].image}
+                alt={headshots[selectedIndex].name}
+                style={isFullscreen ? { width: '100%', height: '100%', objectFit: 'contain' } : { maxWidth: '80vw', maxHeight: '70vh', borderRadius: 8 }}
+              />
+              <h3 style={{ marginTop: 16 }}>{headshots[selectedIndex].name}</h3>
             </div>
           </div>
         )}
