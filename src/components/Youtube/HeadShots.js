@@ -76,8 +76,14 @@ const HeadShots = () => {
   }, []);
 
   return (
-    <section id="headshots" className="headshots-area pt-100" style={{ direction: 'ltr' }}>
-      <div className="container">
+    <>
+      {/* Preload critical images */}
+      <link rel="preload" as="image" href="/images/headshot-1.jpg" />
+      <link rel="preload" as="image" href="/images/headshot-2.jpg" />
+      <link rel="preload" as="image" href="/images/headshot-3.jpg" />
+      
+      <section id="headshots" className="headshots-area pt-100" style={{ direction: 'ltr' }}>
+        <div className="container">
         <div className="section-title-two">
           <h2>My Headshots</h2>
         </div>
@@ -85,12 +91,17 @@ const HeadShots = () => {
           {headshots.map((headshot, idx) => (
             <div className="col-lg-3 col-md-4 col-sm-6" key={idx}>
               <div className="single-headshot-box" style={{ textAlign: 'center', marginBottom: '30px' }}>
-                <img
+                <Image
                   src={headshot.image}
                   alt={headshot.name}
+                  width={220}
+                  height={280}
                   className="img-fluid"
                   style={{ width: '100%', maxWidth: '220px', borderRadius: '8px', cursor: 'pointer' }}
                   onClick={() => openModal(idx)}
+                  priority={idx < 4} // Prioritize first 4 images
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 <h3 style={{ marginTop: '10px', fontSize: '1.1rem' }}>{headshot.name}</h3>
               </div>
@@ -237,11 +248,14 @@ const HeadShots = () => {
                   &times;
                 </button>
               </div>
-              <img
+              <Image
                 ref={imageRef}
                 src={headshots[selectedIndex].image}
                 alt={headshots[selectedIndex].name}
+                width={800}
+                height={600}
                 style={isFullscreen ? { width: '100%', height: '100%', objectFit: 'contain' } : { maxWidth: '80vw', maxHeight: '70vh', borderRadius: 8 }}
+                priority
               />
               <h3 style={{ marginTop: 16 }}>{headshots[selectedIndex].name}</h3>
             </div>
@@ -249,6 +263,7 @@ const HeadShots = () => {
         )}
       </div>
     </section>
+    </>
   );
 };
 
