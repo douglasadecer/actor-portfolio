@@ -7,12 +7,10 @@ import Image from "next/image";
 
 const videos = [
   {
-    image: "/images/youtube/featured-videos/featured-video1.jpg",
-    title: "Katy Perry - Bon Appétit (Official) ft. Migos",
-    videoId: "dPI-mRFEIH0",
-    duration: "03.05",
-    views: "4.3M views",
-    date: "May 13, 2017",
+    image: "/images/youtube/featured-videos/dramamonologue4.png",
+    title: "Comdey/Drama Monologue",
+    videoId: "0f2XiLLoOmM",
+    duration: "02:23",
   },
   {
     image: "/images/youtube/featured-videos/dramamonologue3.png",

@@ -5,14 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const headshots = [
-  { image: '/images/stand-in.JPG', name: 'Headshot 1' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 2' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 3' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 4' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 5' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 6' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 7' },
-  { image: '/images/stand-in.JPG', name: 'Headshot 8' },
+  { image: '/images/headshot-1.JPG', name: 'Headshot 1' },
+  { image: '/images/headshot-2.JPG', name: 'Headshot 2' },
+  { image: '/images/headshot-3.JPG', name: 'Headshot 3' },
+  { image: '/images/headshot-5.JPG', name: 'Headshot 4' },
+  { image: '/images/headshot-7.JPG', name: 'Headshot 5' },
+  { image: '/images/headshot-9.JPG', name: 'Headshot 6' },
+  { image: '/images/headshot-10.JPG', name: 'Headshot 7' },
+  { image: '/images/headshot-11.JPG', name: 'Headshot 8' },
 ];
 
 const HeadShots = () => {
