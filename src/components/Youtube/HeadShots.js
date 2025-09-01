@@ -19,12 +19,18 @@ const HeadShots = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const modalContentRef = useRef(null);
   const imageRef = useRef(null);
 
   const openModal = (idx) => {
     setSelectedIndex(idx);
     setModalOpen(true);
+    // Update window size when modal opens
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
   };
 
   const closeModal = () => {
@@ -73,6 +79,24 @@ const HeadShots = () => {
       document.removeEventListener('fullscreenchange', handleFsChange);
       document.removeEventListener('webkitfullscreenchange', handleFsChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const updateWindowSize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    // Set initial size
+    updateWindowSize();
+
+    // Add event listener
+    window.addEventListener('resize', updateWindowSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateWindowSize);
   }, []);
 
   return (
@@ -132,11 +156,14 @@ const HeadShots = () => {
                 borderRadius: 10,
                 boxShadow: '0 2px 16px rgba(0,0,0,0.3)',
                 position: 'relative',
-                maxWidth: '90vw',
-                maxHeight: '90vh',
+                width: windowSize.width > 0 ? Math.min(windowSize.width * 0.95, 1200) : '95vw',
+                height: windowSize.height > 0 ? Math.min(windowSize.height * 0.95, 800) : '95vh',
+                maxWidth: '95vw',
+                maxHeight: '95vh',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
               onClick={e => e.stopPropagation()}
               ref={modalContentRef}
@@ -254,7 +281,18 @@ const HeadShots = () => {
                 alt={headshots[selectedIndex].name}
                 width={800}
                 height={600}
-                style={isFullscreen ? { width: '100%', height: '100%', objectFit: 'contain' } : { maxWidth: '80vw', maxHeight: '70vh', borderRadius: 8 }}
+                style={isFullscreen ? { 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'contain' 
+                } : { 
+                  maxWidth: windowSize.width > 0 ? Math.min(windowSize.width * 0.85, 1000) : '85vw',
+                  maxHeight: windowSize.height > 0 ? Math.min(windowSize.height * 0.75, 700) : '75vh',
+                  width: 'auto',
+                  height: 'auto',
+                  borderRadius: 8,
+                  objectFit: 'contain'
+                }}
                 priority
               />
               <h3 style={{ marginTop: 16 }}>{headshots[selectedIndex].name}</h3>
