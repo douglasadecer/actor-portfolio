@@ -5,16 +5,6 @@ const nextConfig = {
     unoptimized: true,
   },
   optimizeFonts: false,
-
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/youtube',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;

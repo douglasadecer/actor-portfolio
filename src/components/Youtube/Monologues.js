@@ -8,7 +8,7 @@ import Image from "next/image";
 const videos = [
   {
     image: "/images/youtube/featured-videos/dramamonologue4.png",
-    title: "Comdey/Drama Monologue",
+    title: "Comedy/Drama Monologue",
     videoId: "0f2XiLLoOmM",
     duration: "02:23",
   },

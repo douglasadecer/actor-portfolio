@@ -1,35 +1,26 @@
 import React from "react";
-import Navbar from "../components/Layouts/Navbar";
-import Banner from "../components/Instagram/Banner";
-import Followers from "../components/Instagram/Followers";
-import About from "../components/Instagram/About";
-import SocialStatistics from "../components/Instagram/SocialStatistics";
-import InstagramAudience from "../components/Instagram/InstagramAudience";
-import VideoArea from "../components/Instagram/VideoArea";
-import Podcast from "../components/Instagram/Podcast";
-import ContactArea from "./../components/Common/ContactArea";
+import NavbarTwo from "../components/Layouts/NavbarTwo";
+import Banner from "../components/Youtube/Banner";
+import Monologues from "../components/Youtube/Monologues";
+import About from "../components/Youtube/About";
+import HeadShots from "../components/Youtube/HeadShots";
+import JoinWithMe from "../components/Youtube/JoinWithMe";
 import Footer from "../components/Layouts/Footer";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <NavbarTwo />
 
       <Banner />
 
-      <Followers />
+      <Monologues />
 
       <About />
 
-      <SocialStatistics />
+      <HeadShots />
 
-      <InstagramAudience />
-
-      <VideoArea />
-
-      <Podcast />
-
-      <ContactArea />
+      <JoinWithMe />
 
       <Footer />
     </>
