@@ -37,7 +37,6 @@ const Navbar = () => {
       "#socialStatistics",
       "#instagramAudience",
       "#blog",
-      "#contact",
     ];
     const sections = sectionIds
       .map((id) => document.querySelector(id))
@@ -46,34 +45,6 @@ const Navbar = () => {
     function onScroll() {
       const fromTop = window.scrollY + 120; // Offset for navbar height
       let found = false;
-      const contactSection = document.querySelector('#contact');
-      const mainNavLinks = document.querySelectorAll('.navbar-nav li a');
-      const contactNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#contact');
-      // Debug logs
-      // Remove these after confirming
-      console.log('Scroll handler running');
-      console.log('contactSection:', contactSection);
-      console.log('contactNavLink:', contactNavLink);
-      // 1. If user is near the bottom, always highlight Contact
-      const scrollBottom = window.innerHeight + window.scrollY;
-      const docHeight = document.documentElement.offsetHeight;
-      if (docHeight - scrollBottom < 100 && contactNavLink) {
-        mainNavLinks.forEach(link => link.classList.remove('active'));
-        contactNavLink.classList.add('active');
-        console.log('Highlighting Contact because at bottom');
-        return;
-      }
-      // 2. If top of viewport is at or past contact section
-      if (contactSection && contactNavLink) {
-        const contactTop = contactSection.getBoundingClientRect().top + window.scrollY;
-        if (window.scrollY + 150 >= contactTop) { // 150px offset for navbar height and margin
-          mainNavLinks.forEach(link => link.classList.remove('active'));
-          contactNavLink.classList.add('active');
-          console.log('Highlighting Contact because at contact section');
-          return;
-        }
-      }
-      // 3. Normal scroll logic for other tabs
       sections.forEach((section, idx) => {
         const link = mainNavLinks[idx];
         if (
@@ -185,17 +156,6 @@ const Navbar = () => {
                   href="#blog"
                 >
                   Blog
-                </AnchorLink>
-              </li>
-
-              <li className="nav-item">
-                <AnchorLink
-                  onClick={toggleNavbar}
-                  offset={() => -1}
-                  className="nav-link"
-                  href="#contact"
-                >
-                  Contact
                 </AnchorLink>
               </li>
             </ul>

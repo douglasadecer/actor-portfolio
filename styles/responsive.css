@@ -586,17 +586,22 @@
     font-size: 13px;
     margin-left: 10px;
   }
+  .about-content-two .about-photo-strip {
+    height: 160px;
+  }
   .about-info-two {
     height: auto;
-    padding: 30px 20px;
+    padding: 28px 24px;
     margin-top: 30px;
   }
-  .about-info-two ul li {
-    margin-bottom: 15px;
-    font-size: 13px;
+  .about-info-two .rep-heading {
+    margin-bottom: 16px;
   }
-  .about-info-two ul li span {
-    font-size: 16px;
+  .about-info-two ul li {
+    margin-bottom: 14px;
+  }
+  .about-info-two ul li .rep-value {
+    font-size: 15px;
   }
   .single-playlists-videos-box .videos-image .playlists-icon i {
     font-size: 25px;

@@ -12,10 +12,7 @@ const Footer = () => {
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-6">
               <p>
-                Copyright &copy;{currentYear} HearMe. Designed by{" "}
-                <a target="_blank" href="https://envytheme.com/">
-                  EnvyTheme
-                </a>
+                Copyright &copy;{currentYear} Douglas Adecer.
               </p>
             </div>
 

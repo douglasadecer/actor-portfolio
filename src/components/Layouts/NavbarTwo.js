@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Image from "next/image";
 
 const NavbarTwo = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -27,19 +26,11 @@ const NavbarTwo = () => {
     // Improved scrollspy logic for nav tab highlighting
     const scrollSpy = () => {
       const mainNavLinks = document.querySelectorAll('.navbar-nav li a');
-      const sectionIds = ['#home', '#monologues', '#about', '#headshots', '#contact'];
+      const sectionIds = ['#home', '#monologues', '#about', '#headshots'];
       const sections = sectionIds.map(id => document.querySelector(id)).filter(Boolean);
       let found = false;
+    
       const fromTop = window.scrollY + 120;
-      // Special case: highlight Contact if near bottom
-      const contactNavLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === '#contact');
-      const scrollBottom = window.innerHeight + window.scrollY;
-      const docHeight = document.documentElement.offsetHeight;
-      if (docHeight - scrollBottom < 100 && contactNavLink) {
-        mainNavLinks.forEach(link => link.classList.remove('active'));
-        contactNavLink.classList.add('active');
-        return;
-      }
       // Normal scroll logic
       sections.forEach((section, idx) => {
         const link = mainNavLinks[idx];
@@ -82,7 +73,7 @@ const NavbarTwo = () => {
       >
         <div className="container-fluid">
           <Link href="/youtube" className="navbar-brand">
-            <Image src="/images/logo2.png" alt="logo" width={128} height={24} />
+            Douglas Adecer
           </Link>
 
           <button
@@ -140,17 +131,6 @@ const NavbarTwo = () => {
                   href="#headshots"
                 >
                   HeadShots
-                </AnchorLink>
-              </li>
-
-              <li className="nav-item">
-                <AnchorLink
-                  onClick={toggleNavbar}
-                  offset={() => -1}
-                  className="nav-link"
-                  href="#contact"
-                >
-                  Contact
                 </AnchorLink>
               </li>
             </ul>

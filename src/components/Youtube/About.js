@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import ModalForm from "./Modal/ModalForm";
-import Image from "next/image";
 
 const About = () => {
   return (
@@ -22,18 +20,21 @@ const About = () => {
                  So here I am—bilingual, cross-cultural, equal parts drama and mischief—ready to bring that restless energy to any set that’ll have me.
                 </p>
 
-                <Image
-                  src="/images/youtube/doug1.png"
-                  alt="image"
-                  width={847}
-                  height={230}
-                />
+                <div className="about-photo-strip" aria-label="Photo highlights">
+                  {[0, 1, 3, 4].map((panel) => (
+                    <div
+                      key={panel}
+                      className="about-photo-panel"
+                      style={{ backgroundPosition: `${panel * 25}% 0` }}
+                    />
+                  ))}
+                </div>
 
                 <p>
                  With seven years of on-set experience across television and film, I bring confidence, adaptability, and a strong 
                  collaborative spirit to every project. I’m particularly drawn to ensemble-driven, character-led comedies in the 
                  spirit of American Pie, Superbad, and Van Wilder — the kind of unapologetic, coming-of-age stories that feel 
-                 increasingly rare today. I’d love to be part of bringing that energy to a new generation.
+                 increasingly rare today.
                  <br />
                  <br />
                  <strong>Hobbys</strong>
@@ -41,37 +42,73 @@ const About = () => {
                  <em>Motorcycle riding, A high-intermediate tennis player, Skydiving, Paintball, CineBuff and the list goes on... </em>
                 </p>
 
-                <div className="btn-box">
-                  <ModalForm />
-                  <span className="email">adecerdouglas@gmail.com
-                  </span>
-                </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-12">
               <div className="about-info-two">
-                <div className="d-table">
-                  <div className="d-table-cell">
-                    <ul>
-                      <li>
-                        Name:
-                        <span>Douglas Adecer</span>
-                      </li>
-                      <li>
-                        Email:
-                        <span className="email">adecerdouglas@gmail.com</span>
-                      </li>
-                      <li>
-                        Role:
-                        <span>Actor</span>
-                      </li>
-                      <li>
-                        Phone:
-                        <span> <a href="tel:0406057278" className="phone">+61 406 057 278</a></span>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="rep-block">
+                  <h6 className="rep-heading">Management</h6>
+                  <ul>
+                    <li>
+                      <span className="rep-label">Company</span>
+                      <span className="rep-value">Seven Summits</span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Email</span>
+                      <span className="rep-value">
+                        <a href="mailto:reception@seven-summits.org">
+                          reception@seven-summits.org
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Address</span>
+                      <span className="rep-value">
+                        <a href="https://seven-summits.org//">
+                        9250 Wilshire Blvd, Suite 210, Beverly Hills, 90212, CA, USA
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Phone</span>
+                      <span className="rep-value">
+                        <a href="tel:+13105506777">+1 310 550 6777</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="rep-block">
+                  <h6 className="rep-heading">Australian Agent</h6>
+                  <ul>
+                    <li>
+                      <span className="rep-label">Agency</span>
+                      <span className="rep-value">The Agency at AIPA</span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Email</span>
+                      <span className="rep-value">
+                        <a href="mailto:theagency@aipa.com.au">
+                          theagency@aipa.com.au
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Address</span>
+                      <span className="rep-value">
+                        <a href="https://theschoolataipa.com.au/the-agency-at-aipa/">
+                        2 George Place Unit 4, Artarmon, Sydney, 2064, NSW, Australia
+                        </a>
+                      </span>
+                    </li>
+                    <li>
+                      <span className="rep-label">Phone</span>
+                      <span className="rep-value">
+                        <a href="tel:+61299665425">+61 2 9966 5425</a>
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
