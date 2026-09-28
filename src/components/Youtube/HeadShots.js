@@ -10,8 +10,8 @@ const headshots = [
   { image: '/images/headshot-3.jpg', name: 'Headshot 3' },
   { image: '/images/headshot-4.jpg', name: 'Headshot 4' },
   { image: '/images/headshot-6.jpg', name: 'Headshot 5' },
-  { image: '/images/headshot-8.jpg', name: 'Headshot 6' },
-  { image: '/images/headshot-10.jpg', name: 'Headshot 7' },
+  { image: '/images/headshot-7.jpg', name: 'Headshot 6' },
+  { image: '/images/headshot-8.jpg', name: 'Headshot 7' },
   { image: '/images/headshot-11.jpg', name: 'Headshot 8' },
 ];
 
