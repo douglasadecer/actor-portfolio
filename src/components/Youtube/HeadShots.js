@@ -115,18 +115,36 @@ const HeadShots = () => {
           {headshots.map((headshot, idx) => (
             <div className="col-lg-3 col-md-4 col-sm-6" key={idx}>
               <div className="single-headshot-box" style={{ textAlign: 'center', marginBottom: '30px' }}>
-                <Image
-                  src={headshot.image}
-                  alt={headshot.name}
-                  width={220}
-                  height={280}
-                  className="img-fluid"
-                  style={{ width: '100%', maxWidth: '220px', borderRadius: '8px', cursor: 'pointer' }}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') openModal(idx);
+                  }}
                   onClick={() => openModal(idx)}
-                  priority={idx < 4} // Prioritize first 4 images
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                />
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    maxWidth: 220,
+                    aspectRatio: '11 / 14',
+                    margin: '0 auto',
+                    borderRadius: 8,
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Image
+                    src={headshot.image}
+                    alt={headshot.name}
+                    fill
+                    sizes="220px"
+                    className="img-fluid"
+                    style={{ objectFit: 'cover' }}
+                    priority={idx < 4}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  />
+                </div>
                 <h3 style={{ marginTop: '10px', fontSize: '1.1rem' }}>{headshot.name}</h3>
               </div>
             </div>
